@@ -7,7 +7,7 @@ public class ResultResponse {
 	
     private static Map<String, Object> map = new HashMap<String, Object>();
 	
-	public static Map<String, Object> getResultResponse(String code, String message, Map<String, Object> data){
+	public static Map<String, Object> getResultResponse(String code, String message, Object data){
 		map.put("code", code);
 		map.put("message", message);
 		map.put("data", data);
