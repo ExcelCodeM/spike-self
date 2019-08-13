@@ -20,10 +20,7 @@ public class CourseController {
     private CourseService courseService;
 
     @RequestMapping(value = "/courseList", method = {RequestMethod.GET})
-    public Map<String, Object> courseList(@Valid @RequestBody Course course, BindingResult bindingResult){
-        if(bindingResult.hasErrors()) {
-            return ResultResponse.getResultResponse("000001", bindingResult.getAllErrors().get(0).getDefaultMessage(),null);
-        }
+    public Map<String, Object> courseList(){
 
         List<Course> courseList = courseService.findAll();
 
