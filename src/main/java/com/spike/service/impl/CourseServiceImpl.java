@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CourseServiceImpl implements CourseService {
@@ -40,4 +41,18 @@ public class CourseServiceImpl implements CourseService {
 
         return courseList;
     }
+
+    @Override
+    public Course findByCourseId(String courseId) {
+        Optional<Course> course = courseRepository.findById(courseId);
+        return course.orElse(null);
+    }
+
+	@Override
+	public int reduceStockByCourseNo(String courseNo) {
+		int secuess = courseRepository.reduceStockByCourseNo(courseNo);
+		return 0;
+	}
+
+
 }

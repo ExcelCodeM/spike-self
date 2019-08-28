@@ -1,193 +1,180 @@
 package com.spike.model;
 
-import javax.persistence.Basic;
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.math.BigDecimal;
-import java.sql.Timestamp;
-import java.util.Objects;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
-public class Orders {
-    private long orderId;
-    private String courseNo;
-    private String username;
-    private String courseName;
-    private Integer coursePrice;
-    private BigDecimal payPrice;
-    private String payment;
-    private String payStatus;
-    private Timestamp payDate;
-    private Timestamp createDate;
-    private String creatBy;
-    private Timestamp updateDate;
-    private String updateBy;
-    private String coursePic;
+@Table(name="orders")
+public class Orders implements Serializable{
+	
+	private static final long serialVersionUID = 9030708435497103633L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="order_id")
+	private Long orderId;
+	
+	@Column(name="course_no", nullable=false)
+	private String courseNo;
+	
+	@Column(name="username", nullable=false)
+	private String username;
+	
+	@Column(name="course_name", nullable=false)
+	private String courseName;
+	
+	@Column(name="course_price", nullable=false)
+	private BigDecimal coursePrice;
+	
+	@Column(name="pay_price", nullable=false)
+	private BigDecimal payPrice;
+	
+	@Column(name="payment")
+	private String payment;
+	
+	@Column(name="pay_status", nullable=false)
+	private String payStatus;
+	
+	@Column(name="pay_date")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date payDate;
+	
+	@Column(name="create_date")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date createDate;
+	
+	@Column(name="creat_by")
+	private String creatBy;
+	
+	@Column(name="update_date")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date updateDate;
+	
+	@Column(name="update_by")
+	private String updateBy;
 
-    @Id
-    @Column(name = "order_id")
-    public long getOrderId() {
-        return orderId;
-    }
+	@Column(name="course_pic")
+	private String coursePic;
 
-    public void setOrderId(long orderId) {
-        this.orderId = orderId;
-    }
+	public String getCoursePic() {
+		return coursePic;
+	}
 
-    @Basic
-    @Column(name = "course_no")
-    public String getCourseNo() {
-        return courseNo;
-    }
+	public void setCoursePic(String coursePic) {
+		this.coursePic = coursePic;
+	}
+	
+	public Long getOrderId() {
+		return orderId;
+	}
 
-    public void setCourseNo(String courseNo) {
-        this.courseNo = courseNo;
-    }
+	public void setOrderId(Long orderId) {
+		this.orderId = orderId;
+	}
 
-    @Basic
-    @Column(name = "username")
-    public String getUsername() {
-        return username;
-    }
+	public String getCourseNo() {
+		return courseNo;
+	}
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+	public void setCourseNo(String courseNo) {
+		this.courseNo = courseNo;
+	}
 
-    @Basic
-    @Column(name = "course_name")
-    public String getCourseName() {
-        return courseName;
-    }
+	public String getUsername() {
+		return username;
+	}
 
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
-    }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-    @Basic
-    @Column(name = "course_price")
-    public Integer getCoursePrice() {
-        return coursePrice;
-    }
+	public String getCourseName() {
+		return courseName;
+	}
 
-    public void setCoursePrice(Integer coursePrice) {
-        this.coursePrice = coursePrice;
-    }
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
+	}
 
-    @Basic
-    @Column(name = "pay_price")
-    public BigDecimal getPayPrice() {
-        return payPrice;
-    }
+	public BigDecimal getCoursePrice() {
+		return coursePrice;
+	}
 
-    public void setPayPrice(BigDecimal payPrice) {
-        this.payPrice = payPrice;
-    }
+	public void setCoursePrice(BigDecimal coursePrice) {
+		this.coursePrice = coursePrice;
+	}
 
-    @Basic
-    @Column(name = "payment")
-    public String getPayment() {
-        return payment;
-    }
+	public BigDecimal getPayPrice() {
+		return payPrice;
+	}
 
-    public void setPayment(String payment) {
-        this.payment = payment;
-    }
+	public void setPayPrice(BigDecimal payPrice) {
+		this.payPrice = payPrice;
+	}
 
-    @Basic
-    @Column(name = "pay_status")
-    public String getPayStatus() {
-        return payStatus;
-    }
+	public String getPayment() {
+		return payment;
+	}
 
-    public void setPayStatus(String payStatus) {
-        this.payStatus = payStatus;
-    }
+	public void setPayment(String payment) {
+		this.payment = payment;
+	}
 
-    @Basic
-    @Column(name = "pay_date")
-    public Timestamp getPayDate() {
-        return payDate;
-    }
+	public String getPayStatus() {
+		return payStatus;
+	}
 
-    public void setPayDate(Timestamp payDate) {
-        this.payDate = payDate;
-    }
+	public void setPayStatus(String payStatus) {
+		this.payStatus = payStatus;
+	}
 
-    @Basic
-    @Column(name = "create_date")
-    public Timestamp getCreateDate() {
-        return createDate;
-    }
+	public Date getPayDate() {
+		return payDate;
+	}
 
-    public void setCreateDate(Timestamp createDate) {
-        this.createDate = createDate;
-    }
+	public void setPayDate(Date payDate) {
+		this.payDate = payDate;
+	}
 
-    @Basic
-    @Column(name = "creat_by")
-    public String getCreatBy() {
-        return creatBy;
-    }
+	public Date getCreateDate() {
+		return createDate;
+	}
 
-    public void setCreatBy(String creatBy) {
-        this.creatBy = creatBy;
-    }
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
 
-    @Basic
-    @Column(name = "update_date")
-    public Timestamp getUpdateDate() {
-        return updateDate;
-    }
+	public String getCreatBy() {
+		return creatBy;
+	}
 
-    public void setUpdateDate(Timestamp updateDate) {
-        this.updateDate = updateDate;
-    }
+	public void setCreatBy(String creatBy) {
+		this.creatBy = creatBy;
+	}
 
-    @Basic
-    @Column(name = "update_by")
-    public String getUpdateBy() {
-        return updateBy;
-    }
+	public Date getUpdateDate() {
+		return updateDate;
+	}
 
-    public void setUpdateBy(String updateBy) {
-        this.updateBy = updateBy;
-    }
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
+	}
 
-    @Basic
-    @Column(name = "course_pic")
-    public String getCoursePic() {
-        return coursePic;
-    }
+	public String getUpdateBy() {
+		return updateBy;
+	}
 
-    public void setCoursePic(String coursePic) {
-        this.coursePic = coursePic;
-    }
+	public void setUpdateBy(String updateBy) {
+		this.updateBy = updateBy;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Orders orders = (Orders) o;
-        return orderId == orders.orderId &&
-                Objects.equals(courseNo, orders.courseNo) &&
-                Objects.equals(username, orders.username) &&
-                Objects.equals(courseName, orders.courseName) &&
-                Objects.equals(coursePrice, orders.coursePrice) &&
-                Objects.equals(payPrice, orders.payPrice) &&
-                Objects.equals(payment, orders.payment) &&
-                Objects.equals(payStatus, orders.payStatus) &&
-                Objects.equals(payDate, orders.payDate) &&
-                Objects.equals(createDate, orders.createDate) &&
-                Objects.equals(creatBy, orders.creatBy) &&
-                Objects.equals(updateDate, orders.updateDate) &&
-                Objects.equals(updateBy, orders.updateBy) &&
-                Objects.equals(coursePic, orders.coursePic);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(orderId, courseNo, username, courseName, coursePrice, payPrice, payment, payStatus, payDate, createDate, creatBy, updateDate, updateBy, coursePic);
-    }
 }
